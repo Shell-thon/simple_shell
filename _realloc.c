@@ -20,16 +20,16 @@ void *_realloc(void *prmPtr, unsigned int prmOldSize, unsigned int prmNewSize)
 	if (prmNewSize == 0)
 	{
 		free(prmPtr);
-		return (NULL);
+			return (NULL);
 	}
 
-	s = malloc(prmNewSize);
+	s = malloc(prmNewSize)
 
 	if (s == NULL)
-		return (NULL);
+		return (NULL)
 
 	s = _memcpy(s, prmPtr, prmOldSize);
-	free(prmPtr);
+		free(prmPtr);
 
-	return (s);
+		return (s);
 }
