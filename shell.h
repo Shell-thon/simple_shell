@@ -98,4 +98,8 @@ size_t print_list(const list_t *h);
 /*Shell.c*/
 int shl_exec(char **argv, char *av[]);
 
+/*Environment variable*/
+void execmd(char **argv);
+char *get_location(char *command);
+
 #endif
