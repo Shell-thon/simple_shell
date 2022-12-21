@@ -78,6 +78,9 @@ void print_error(shl_t *data, char *dest);
 int builtin_call(char **argv, char *av[]);
 int shl_exit();
 int shl_help();
+int builtin_call(shl_t *);
+int shl_exit(shl_t *data);
+int shl_help(shl_t *data);
 
 /*Strings functions*/
 int _strlen(char *s);
