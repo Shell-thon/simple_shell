@@ -65,6 +65,7 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 			j = len;
 		}
 	}
+
 	*p = j;
 }
 
@@ -93,7 +94,7 @@ int replace_alias(info_t *info)
 		if (!p)
 			return (0);
 		info->argv[0] = p;
-																						}
+	}
 	return (1);
 }
 
@@ -116,23 +117,24 @@ int replace_vars(info_t *info)
 		if (!_strcmp(info->argv[i], "$?"))
 		{
 			replace_string(&(info->argv[i]),
-			_strdup(convert_number(info->status, 10, 0)));
-				continue;
+				_strdup(convert_number(info->status, 10, 0)));
+			continue;
 		}
 		if (!_strcmp(info->argv[i], "$$"))
 		{
 			replace_string(&(info->argv[i]),
-			_strdup(convert_number(getpid(), 10, 0)));
-				continue;
+				_strdup(convert_number(getpid(), 10, 0)));
+			continue;
 		}
 		node = node_starts_with(info->env, &info->argv[i][1], '=');
 		if (node)
 		{
 			replace_string(&(info->argv[i]),
-			_strdup(_strchr(node->str, '=') + 1));
-				continue;
+				_strdup(_strchr(node->str, '=') + 1));
+			continue;
 		}
-		replace_string(&info->argv[i], _strdup(""))
+		replace_string(&info->argv[i], _strdup(""));
+
 	}
 	return (0);
 }
@@ -148,5 +150,5 @@ int replace_string(char **old, char *new)
 {
 	free(*old);
 	*old = new;
-		return (1);
+	return (1);
 }
